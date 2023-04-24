@@ -1,20 +1,40 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import ImagenPaginas from './paginas/ImagenPaginas';
+import PaginasHome from './paginas/PaginasHome';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
+// creo un objeto el cula va a contener una funcion que nos permite navegar  de cierta manera
+const Stack=createNativeStackNavigator()  
+
+
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+    // NavigatonContainer : sirve par crear multiples pantallas = rauter
+    <NavigationContainer>   
+      {/* Stack navigator es un contenedor donde vamos a colorcar otros componenetes (Stack.Screem) es como un route es donde va cada pagina de mi app , por cada paguina va un (Stack.screem)    */}
+    <Stack.Navigator>
+
+      {/*Stack.Screen  = raute  */}
+     <Stack.Screen name='Imagenes' component={ImagenPaginas}/>
+     <Stack.Screen name="Home" component={PaginasHome} />
+
+
+
+    </Stack.Navigator>
+     
+
+  <StatusBar/>
+
+    </NavigationContainer>
+  
   );
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
